@@ -7,15 +7,13 @@ public class Player : MonoBehaviour
     public float SpeedMultiplier;
     public MeshCollider ClickCollider;
     public Camera Camera;
+    public Boolean EnableMouseMovement;
 
     private CharacterController characterController;
     private NavMeshAgent agent;
     private Vector3 destination;
     private Ray ray;
     private LineDrawer line;
-
-    // Set this to false to enable WASD controls
-    static private Boolean EnableMouseMovement = true;
 
     // Start is called before the first frame update
     void Start() {
