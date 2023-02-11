@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour {
     private CharacterController characterController;
     private NavMeshAgent agent;
     private Vector3 destination;
-    private LineDrawer line;
     private MoveState moveState;
     public bool canSeeTarget = false;
 
@@ -70,8 +69,6 @@ public class Enemy : MonoBehaviour {
             default:
                 throw new Exception(String.Format("MoveState {0} not detected.", moveState));
         }
-
-        line.DrawLineInGameView(transform.position, agent.destination, Color.red);
     }
 
     private IEnumerator FOVRoutine() {
