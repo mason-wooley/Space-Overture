@@ -6,11 +6,11 @@ using UnityEngine;
 public class FogOfWar : MonoBehaviour
 {
 
-    public GameObject fogOfWarPlane;
-    public Transform player; //todo: get the actual player here
-    public LayerMask fogLayer;
-    public float radius = 5f;
-    private float radiusSqr { get { return radius * radius; } }
+    public GameObject FogOfWarPlane;
+    public Transform Player; //todo: get the actual player here
+    public LayerMask FogLayer;
+    public float Radius = 5f;
+    private float radiusSqr { get { return Radius * Radius; } }
 
     private Mesh mesh;
     private Vector3[] vertices;
@@ -26,15 +26,16 @@ public class FogOfWar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray r = new Ray(transform.position, player.position - transform.position);
+        Ray r = new Ray(transform.position, Player.position - transform.position);
         RaycastHit hit;
-        if(Physics.Raycast(r, out hit, maxDistance, fogLayer, QueryTriggerInteraction.Collide)) {
+        if(Physics.Raycast(r, out hit, maxDistance, FogLayer)) {
             for (int i=0; i < vertices.Length; i++) {
-                Vector3 v = fogOfWarPlane.transform.TransformPoint(vertices[i]);
+                Vector3 v = FogOfWarPlane.transform.TransformPoint(vertices[i]);
                 float dist = Vector3.SqrMagnitude(v - hit.point);
                 if (dist < radiusSqr) {
                     float alpha = Mathf.Min(colors[i].a, dist / radiusSqr);
-                    colors[i].a = alpha;
+                    colors[i] = Color.white;
+                    colors[i].a = 0;
                 }
             }
             UpdateColor();
@@ -42,7 +43,7 @@ public class FogOfWar : MonoBehaviour
     }
 
     void Initialize() {
-        mesh = fogOfWarPlane.GetComponent<MeshFilter>().mesh;
+        mesh = FogOfWarPlane.GetComponent<MeshFilter>().sharedMesh;
         vertices = mesh.vertices;
         colors = new Color[vertices.Length];
         for (int i=0; i < colors.Length; i++) {
