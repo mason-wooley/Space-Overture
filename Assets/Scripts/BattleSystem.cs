@@ -10,7 +10,7 @@ public enum BattleState {
     PAUSE,
     END
 }
-
+/*
 public class BattleSystem : MonoBehaviour {
     public BattleState State;
 
@@ -46,3 +46,4 @@ public class BattleSystem : MonoBehaviour {
 
     }
 }
+*/
