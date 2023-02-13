@@ -73,8 +73,8 @@ public class Patroller : MonoBehaviour {
         string[] names = quadMaterial.GetTexturePropertyNames();
 
         foreach (string name in names) {
-            Debug.Log(name);
-            Debug.Log(quadMaterial.shader);
+            //Debug.Log(name);
+            //Debug.Log(quadMaterial.shader);
         }
     }
 }
