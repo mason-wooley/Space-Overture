@@ -3,16 +3,18 @@ using UnityEngine;
 [ExecuteAlways]
 public class ToggleFoggle : MonoBehaviour {
     public bool OverrideShow;
+    public MeshCollider Collider;
+    public MeshRenderer Renderer;
 
     void Update () {
         // If play mode is on, let it show
         if (Application.IsPlaying(gameObject) || OverrideShow) {
-            gameObject.GetComponent<MeshCollider>().enabled = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            Collider.enabled = true;
+            Renderer.enabled = true;
         } else {
             // Disable the fog so it's easier to see in edit mode :-)
-            gameObject.GetComponent<MeshCollider>().enabled = false;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Collider.enabled = false;
+            Renderer.enabled = false;
         }
     }
 }

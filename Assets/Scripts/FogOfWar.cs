@@ -34,8 +34,7 @@ public class FogOfWar : MonoBehaviour
                 float dist = Vector3.SqrMagnitude(v - hit.point);
                 if (dist < radiusSqr) {
                     float alpha = Mathf.Min(colors[i].a, dist / radiusSqr);
-                    colors[i] = Color.white;
-                    colors[i].a = 0;
+                    colors[i].a = alpha;
                 }
             }
             UpdateColor();
@@ -47,7 +46,7 @@ public class FogOfWar : MonoBehaviour
         vertices = mesh.vertices;
         colors = new Color[vertices.Length];
         for (int i=0; i < colors.Length; i++) {
-            colors[i] = Color.black;
+            colors[i] = Color.white;
         }
         UpdateColor();
         print("UwU");
