@@ -23,7 +23,12 @@ public class UIController : MonoBehaviour
     }
 
     void attack1Pressed () {
-        Debug.Log("I punch!");
+        var punchCommand = Object.FindObjectOfType<PunchCommandPool>().GetCommandObject();
+        var config = new Dictionary<string, object>();
+        config.Add("enemy", Object.FindObjectOfType<Enemy>());
+        config.Add("damage", 10);
+        punchCommand.Configure(config);
+        punchCommand.Execute();
     }
 
     void attack2Pressed () {

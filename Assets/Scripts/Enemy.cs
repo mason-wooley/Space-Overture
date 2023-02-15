@@ -39,6 +39,10 @@ public class Enemy : MonoBehaviour {
         agent.SetDestination(destination);
     }
 
+    public void TakeDamage (int damage) {
+        Debug.Log(String.Format("Ouch, owie! Why did you hit me for {0} damage?", damage));
+    }
+
     // Update is called once per frame
     void Update() {
         if (canSeeTarget) {
